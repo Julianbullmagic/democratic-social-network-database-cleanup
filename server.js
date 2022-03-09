@@ -436,8 +436,8 @@ cron.schedule('0 0 0 * * *', () => {
                 }
               }
 
-              // runs at the beginning of every month 0 0 1 * *
-              cron.schedule('0 0 1 * *', () => {
+              // runs at the beginning of every third month 
+              cron.schedule('0 0 1 */3 *', () => {
                 shufflemembersallgroups()
               })
 

@@ -7,8 +7,7 @@
   "scripts": {
     "test": "mocha --timeout 10000000 task",
     "test2": "mocha --timeout 10000000 task2",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
