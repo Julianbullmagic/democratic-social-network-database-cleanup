@@ -58,8 +58,7 @@ app.use(function(req,res,next){
 })
 
 console.log(process.env.DATABASE)
-const connect = mongoose
-.connect(process.env.DATABASE, { useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE, { useNewUrlParser: true })
 .then(() => console.log("connected to mongodb"))
 .catch(err => console.error(err));
 
@@ -83,7 +82,7 @@ cron.schedule('0 0 0 * * *', () => {
     let n = d.getTime();
     let users=await User.find().exec()
     let events=await Event.find().exec()
-    let rules=await Event.find().exec()
+    let rules=await Rule.find().exec()
     let restrictions=await Restriction.find().exec()
     let posts=await Post.find().exec()
     let polls=await Poll.find().exec()
@@ -100,7 +99,7 @@ cron.schedule('0 0 0 * * *', () => {
 
     // removeSmallGroups(groups,n)
 
-    removeInactiveUsers(users,n)
+    // removeInactiveUsers(users,n)
 
     cleaningUpVotesRemovingVotesOfInactiveUsers(n,users,events,rules,restrictions,
       polls,suggestions,restrictionpolls,groups)
@@ -436,7 +435,7 @@ cron.schedule('0 0 0 * * *', () => {
                 }
               }
 
-              // runs at the beginning of every third month 
+              // runs at the beginning of every third month
               cron.schedule('0 0 1 */3 *', () => {
                 shufflemembersallgroups()
               })
